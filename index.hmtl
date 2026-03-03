@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reitanlage Stietenroth | Waake-Bösinghausen</title>
+  <meta name="description" content="Reitanlage Stietenroth in Waake/Bösinghausen – Pferdepension, Reithalle, Reitunterricht und mehr. Idyllisch gelegen inmitten von Wäldern und Wiesen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-bg: #0a0a0a;
+      --color-bg-alt: #111111;
+      --color-bg-card: #1a1a1a;
+      --color-text: #f5f5f5;
+      --color-text-muted: #a0a0a0;
+      --color-accent: #c8a96e;
+      --color-accent-light: #e2cc9c;
+      --color-accent-dark: #9a7d4a;
+      --color-border: #2a2a2a;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --section-padding: clamp(80px, 10vw, 140px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--color-accent);
+      color: var(--color-bg);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--color-accent-light);
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav.scrolled {
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: var(--color-text);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .nav-logo span {
+      color: var(--color-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: clamp(20px, 3vw, 40px);
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--color-accent) !important;
+      color: var(--color-bg) !important;
+      padding: 10px 24px !important;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      letter-spacing: 0.02em !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--color-accent-light) !important;
+      transform: translateY(-1px);
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--color-text);
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.7) 100%),
+        url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1920&q=80') center/cover no-repeat;
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.15); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 clamp(20px, 4vw, 60px);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--color-accent);
+      color: var(--color-accent);
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease 0.8s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 36px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: var(--color-bg);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-light);
+      color: var(--color-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(200, 169, 110, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-text-muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: fadeInUp 1s ease 1.2s both;
+    }
+
+    .hero-scroll .line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--color-accent), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ===== SECTION COMMON ===== */
+    .section {
+      padding: var(--section-padding) 0;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 60px);
+    }
+
+    .section-header {
+      max-width: 700px;
+      margin-bottom: clamp(48px, 6vw, 80px);
+    }
+
+    .section-header.centered {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: var(--color-accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--color-text-muted);
+      line-height: 1.8;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: var(--color-bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(200, 169, 110, 0.2);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .about-text h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .about-text p {
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== SERVICES / LEISTUNGEN ===== */
+    .services {
+      background: var(--color-bg-alt);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: clamp(28px, 3vw, 40px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover {
+      border-color: var(--color-accent-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: rgba(200, 169, 110, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===== FEATURES STRIP ===== */
+    .features-strip {
+      background: var(--color-bg);
+      padding: clamp(60px, 8vw, 100px) 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .feature-check {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(200, 169, 110, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .feature-check svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--color-accent);
+      fill: none;
+      stroke-width: 3;
+    }
+
+    .feature-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .feature-item p {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== GALLERY / IMPRESSIONEN ===== */
+    .gallery {
+      background: var(--color-bg-alt);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.5) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+      min-height: 500px;
+    }
+
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3) {
+      min-height: 240px;
+    }
+
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5) {
+      min-height: 240px;
+    }
+
+    /* ===== TESTIMONIAL / QUOTE ===== */
+    .quote-section {
+      background: var(--color-bg);
+      text-align: center;
+      padding: clamp(80px, 10vw, 160px) 0;
+    }
+
+    .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .quote-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 32px;
+      color: var(--color-text);
+    }
+
+    .quote-author {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+
+    .quote-author strong {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: var(--color-bg-alt);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+    }
+
+    .contact-info h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .contact-detail .icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(200, 169, 110, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-detail .icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--color-accent);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .contact-detail .info h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-detail .info p {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .contact-map {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      min-height: 400px;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      border: none;
+      filter: grayscale(0.8) contrast(1.1);
+      transition: filter 0.4s ease;
+    }
+
+    .contact-map:hover iframe {
+      filter: grayscale(0.3) contrast(1);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-accent);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+        min-height: 350px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        order: -1;
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 1;
+        grid-row: span 1;
+        min-height: 280px;
+      }
+
+      .gallery-item:nth-child(2),
+      .gallery-item:nth-child(3),
+      .gallery-item:nth-child(4),
+      .gallery-item:nth-child(5) {
+        min-height: 220px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 8vw, 3.5rem);
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-stats {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Reitanlage <span>Stietenroth</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#ueber-uns" onclick="closeMenu()">Über uns</a></li>
+        <li><a href="#leistungen" onclick="closeMenu()">Leistungen</a></li>
+        <li><a href="#anlage" onclick="closeMenu()">Anlage</a></li>
+        <li><a href="#impressionen" onclick="closeMenu()">Impressionen</a></li>
+        <li><a href="#kontakt" onclick="closeMenu()" class="nav-cta">Kontakt</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Waake-Bösinghausen &bull; Südniedersachsen</div>
+      <h1>Wo Pferde sich <em>zuhause</em> fühlen</h1>
+      <p class="hero-sub">Idyllisch gelegen inmitten von Wäldern und Wiesen – die Reitanlage Stietenroth bietet erstklassige Pferdehaltung mit familiärem Flair.</p>
+      <div class="hero-buttons">
+        <a href="#kontakt" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Kontakt aufnehmen
+        </a>
+        <a href="#leistungen" class="btn btn-outline">Unsere Leistungen</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Entdecken</span>
+      <div class="line"></div>
+    </div>
+  </section>
+
+  <!-- ===== ÜBER UNS ===== -->
+  <section class="section about" id="ueber-uns">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80" alt="Pferde auf der Weide der Reitanlage Stietenroth" loading="lazy">
+        </div>
+        <div class="about-text">
+          <span class="section-label reveal">Über uns</span>
+          <h2 class="reveal reveal-delay-1">Mehr als nur ein Stall – ein Zuhause für Ihr Pferd</h2>
+          <p class="reveal reveal-delay-2">Die Reitanlage Stietenroth wird von Jost und Monika Stietenroth geführt und bietet seit vielen Jahren eine erstklassige Pferdepension in idyllischer Lage bei Waake/Bösinghausen in Südniedersachsen.</p>
+          <p class="reveal reveal-delay-3">Inmitten von großflächigen Wäldern und Wiesen gelegen, bieten wir unseren Pensionspferden eine liebevolle, individuelle Versorgung – dreimal täglich, sieben Tage die Woche. Familiäres Flair und persönliche Betreuung stehen bei uns an erster Stelle.</p>
+          <div class="about-stats reveal reveal-delay-4">
+            <div>
+              <div class="stat-number">3×</div>
+              <div class="stat-label">Tägliche Fütterung</div>
+            </div>
+            <div>
+              <div class="stat-number">7</div>
+              <div class="stat-label">Tage die Woche</div>
+            </div>
+            <div>
+              <div class="stat-number">365</div>
+              <div class="stat-label">Tage im Jahr</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEISTUNGEN ===== -->
+  <section class="section services" id="leistungen">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">Leistungen</span>
+        <h2 class="section-title reveal reveal-delay-1">Alles für Reiter &amp; Pferd</h2>
+        <p class="section-desc reveal reveal-delay-2">Unsere gepflegte Anlage bietet alle Einrichtungen, die Sie und Ihr Pferd für Training, Haltung und Wohlbefinden benötigen.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Reithalle</h3>
+          <p>Große, helle Reithalle mit hochwertigem Spezialsand für ganzjähriges Training unabhängig vom Wetter.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Allwetter-Reitplatz</h3>
+          <p>Großzügiger Außenreitplatz mit Sand und Bewässerungsanlage – bei jedem Wetter nutzbar.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Innenboxen</h3>
+          <p>Helle, geräumige Innenboxen mit Fenstern und Außenklappen zum Hof oder zur Stallgasse.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Paddocks &amp; Weiden</h3>
+          <p>Auslauf-Paddocks, Auslaufweiden und Dauersommerweide für artgerechte Haltung und viel Bewegung.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <h3>Solarium</h3>
+          <p>Pferdesolarium zum Trocknen und Entspannen nach dem Training – für das Wohlbefinden Ihres Pferdes.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Reitunterricht</h3>
+          <p>Qualifizierter Reitunterricht und Pferdeausbildung – von der Dressur bis zum entspannten Ausreiten.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WEITERE AUSSTATTUNG ===== -->
+  <section class="features-strip" id="anlage">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">Unsere Anlage</span>
+        <h2 class="section-title reveal reveal-delay-1">Rundum bestens ausgestattet</h2>
+      </div>
+      <div class="features-list">
+
+        <div class="feature-item reveal">
+          <div class="feature-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Waschplätze</h4>
+            <p>Komfortable Waschplätze für die Pferdepflege direkt auf der Anlage.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal reveal-delay-1">
+          <div class="feature-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Reiterstube</h4>
+            <p>Gemütliche Reiterstube zum Austausch und Entspannen nach dem Reiten.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal reveal-delay-2">
+          <div class="feature-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Bewässerung</h4>
+            <p>Professionelle Bewässerungsanlage für optimale Bodenverhältnisse.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal reveal-delay-1">
+          <div class="feature-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Parkplätze</h4>
+            <p>Ausreichend Parkplätze direkt auf dem Gelände – auch für Anhänger.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal reveal-delay-2">
+          <div class="feature-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Ausreitgelände</h4>
+            <p>Herrliche Ausreitmöglichkeiten durch Wälder und über Wiesen.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal reveal-delay-3">
+          <div class="feature-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Familiäre Atmosphäre</h4>
+            <p>Persönliche Betreuung und ein herzliches Miteinander auf der Anlage.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IMPRESSIONEN ===== -->
+  <section class="section gallery" id="impressionen">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">Impressionen</span>
+        <h2 class="section-title reveal reveal-delay-1">Einblicke in unsere Anlage</h2>
+        <p class="section-desc reveal reveal-delay-2">Überzeugen Sie sich selbst von unserer gepflegten Reitanlage, den großzügigen Weiden und der idyllischen Umgebung.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1200&q=80" alt="Pferd auf der Weide" loading="lazy">
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1534307671554-9a6d81f4d629?w=600&q=80" alt="Reithalle" loading="lazy">
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1450052590821-8bf91254a353?w=600&q=80" alt="Ausreiten im Wald" loading="lazy">
+        </div>
+        <div class="gallery-item reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?w=600&q=80" alt="Pferdebox" loading="lazy">
+        </div>
+        <div class="gallery-item reveal reveal-delay-4">
+          <img src="https://images.unsplash.com/photo-1508669232496-137b159c1cdb?w=600&q=80" alt="Pferd Nahaufnahme" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE ===== -->
+  <section class="quote-section">
+    <div class="container">
+      <div class="quote-mark reveal">&ldquo;</div>
+      <p class="quote-text reveal reveal-delay-1">Das Glück dieser Erde liegt auf dem Rücken der Pferde – und das richtige Zuhause für Ihr Pferd finden Sie bei uns.</p>
+      <p class="quote-author reveal reveal-delay-2"><strong>Jost &amp; Monika Stietenroth</strong> &mdash; Ihre Gastgeber</p>
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT ===== -->
+  <section class="section contact" id="kontakt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label reveal">Kontakt</span>
+        <h2 class="section-title reveal reveal-delay-1">Wir freuen uns auf Sie</h2>
+        <p class="section-desc reveal reveal-delay-2">Vereinbaren Sie einen Besichtigungstermin oder kontaktieren Sie uns für weitere Informationen.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>Reitanlage Stietenroth</h3>
+
+          <div class="contact-detail">
+            <div class="icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="info">
+              <h4>Adresse</h4>
+              <p>Hünstollenstraße 17<br>37136 Waake / Bösinghausen</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="info">
+              <h4>Telefon</h4>
+              <p><a href="tel:+4955075980">05507 / 598</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="info">
+              <h4>E-Mail</h4>
+              <p><a href="mailto:m.stietenroth@web.de">m.stietenroth@web.de</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="info">
+              <h4>Besichtigung</h4>
+              <p>Jederzeit nach Vereinbarung.<br>Rufen Sie uns einfach an!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map reveal reveal-delay-1">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2488.5!2d10.05!3d51.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDMzJzAwLjAiTiAxMMKwMDMnMDAuMCJF!5e0!3m2!1sde!2sde!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Standort Reitanlage Stietenroth">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Reitanlage Stietenroth &bull; Jost &amp; Monika Stietenroth &bull; Fotos: Frank Stietenroth</p>
+        <ul class="footer-links">
+          <li><a href="#hero">Startseite</a></li>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="mailto:m.stietenroth@web.de">Impressum</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Navigation scroll effect
+    const nav = document.getElementById('nav');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
